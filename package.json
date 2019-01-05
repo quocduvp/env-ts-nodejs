@@ -1,0 +1,36 @@
+{
+  "name": "fastify-node",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"jest",
+    "start": "npm run build && npm run serve",
+    "serve": "node dist/server.js",
+    "build": "npm run build-ts",
+    "build-ts": "tsc",
+    "watch-ts": "tsc -w"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/graphql": "^14.0.3",
+    "fastify": "^1.13.3",
+    "fastify-compress": "^0.7.1",
+    "fastify-cors": "^0.2.0",
+    "fastify-graphql": "^4.0.1",
+    "fastify-response-time": "^1.1.0",
+    "firebase-admin": "^6.4.0",
+    "graphql": "^14.0.2"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "jest": "^23.6.0",
+    "shelljs": "^0.8.3",
+    "ts-node": "^7.0.1",
+    "typescript": "^3.2.2"
+  },
+  "env": {
+    "NODE_ENV": "production"
+  }
+}
