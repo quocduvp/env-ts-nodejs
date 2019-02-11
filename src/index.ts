@@ -1,11 +1,10 @@
 import fastify from 'fastify'
-import {graphiqlFastify, graphqlFastify} from 'fastify-graphql'
-import rootSchema from './graphql/schema'
-import rootValue from './graphql/resolvers';
-
+import { ApolloServer } from 'apollo-server'
+import { resolvers,typeDefs } from './graphql'
 // firebase configure
 import * as admin from 'firebase-admin'
 import { credential } from './firebase/credential';
+
 admin.initializeApp({
   credential: admin.credential.cert({
     clientEmail: credential.client_email,
@@ -29,18 +28,11 @@ app.get('/', async (request : any, reply : any) => {
   return await { hello: 'world' };
 })
 
-app.register(graphqlFastify, { 
-  prefix: '/graphql', 
-  graphql: {
-    schema: rootSchema,
-    rootValue: rootValue
-  },
-});
-app.register(graphiqlFastify, {
-  prefix: '/graphiql',
-  graphiql: {
-    endpointURL: '/graphql',
-  }
+const apollo = new ApolloServer({
+  typeDefs,resolvers,
+})
+apollo.listen(4001).then(({ url }) => {
+  console.log(`🚀 GraphQL Server ready at ${url}`);
 });
 
 const start = async () => {

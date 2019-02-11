@@ -5,6 +5,7 @@
         "target": "es6",
         "noImplicitAny": true,
         "moduleResolution": "node",
+        "skipLibCheck": true,
         "sourceMap": true,
         "outDir": "dist",
         "baseUrl": ".",
@@ -31,6 +32,14 @@
         ]
     },
     "include": [
-        "src/**/*"
-    ]
+        "src",
+        "test",
+        "index.ts"
+    ],
+    "exclude": [
+        "node_modules/**",
+        "packages/*/node_modules/**",
+        "**/*.d.ts"
+    ],
+    "compileOnSave": false,
 }

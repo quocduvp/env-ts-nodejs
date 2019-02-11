@@ -1,6 +1,6 @@
-import { buildSchema } from "graphql";
+import { gql } from "apollo-server";
 
-let userSchema = `
+let typeDefs = gql`
     type User{
         first_name: String!
         last_name: String!
@@ -12,10 +12,6 @@ let userSchema = `
         last_name: String!
         age: Int!
     }
-`
-
-let schema = buildSchema(`
-    ${userSchema}
 
     type RootQuery{
         users: [User!]!
@@ -29,6 +25,6 @@ let schema = buildSchema(`
         query: RootQuery,
         mutation: RootMutation
     }
-`)
+`
 
-export default schema
+export {typeDefs}

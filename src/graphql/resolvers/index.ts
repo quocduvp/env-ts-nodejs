@@ -1,7 +1,13 @@
 import { userResolve } from "./user";
 
-const rootValue = {
-    ...userResolve
+const resolvers = {
+    RootQuery: {
+        ...userResolve.RootQuery
+    },
+    RootMutation: {
+        ...userResolve.RootMutation
+    }
+    
 }
 
-export default rootValue
+export {resolvers}
