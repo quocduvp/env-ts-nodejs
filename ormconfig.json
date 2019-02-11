@@ -1,0 +1,13 @@
+{
+    "type": "mongodb",
+    "host": "ds018538.mlab.com",
+    "port": 18538,
+    "username": "quocdukk",
+    "password": "quocdukk1",
+    "database": "startup-dbs",
+    "synchronize": true,
+    "logging": false,
+    "entities": [
+      "dist/src/model/*.js"
+    ]
+  }

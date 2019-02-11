@@ -1,9 +1,23 @@
+require('dotenv').config();
+// 
 import fastify from 'fastify'
 import { ApolloServer } from 'apollo-server'
 import { resolvers,typeDefs } from './graphql'
 // firebase configure
 import * as admin from 'firebase-admin'
 import { credential } from './firebase/credential';
+import { createConnection,getConnection } from 'typeorm'
+import { User } from './model';
+
+createConnection().then(async con => {
+  const user = getConnection().getRepository(User)
+  const u  = new User()
+  u.username = "Adward"
+  u.password = "Adward"
+  user.save(u)
+  // const a = await user.find()
+  // console.log(a)
+})
 
 admin.initializeApp({
   credential: admin.credential.cert({

@@ -5,13 +5,13 @@ const users: Array<any> = [{
 }]
 const userResolve = {
     RootQuery: {
-        users: () => {
+        users: async (self : any, agrs : any, req: any) => {
             return users
         },
     },
     RootMutation: {
-        createUser: (args: any) => {
-            const user = args.user
+        createUser: (self : any, agrs : any, req: any) => {
+            const user = agrs.user
             users.push(user)
             return user
         }
